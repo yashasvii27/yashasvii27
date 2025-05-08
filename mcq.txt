@@ -1,0 +1,185 @@
+1)).What will be output of below code
+
+const expr=require("express")
+
+const app=expr();
+
+student={name:"ABC",age:28}
+
+    app.get("/",(req,res)=>{
+
+res.write(student.age + “ ”) 
+
+res.send()
+
+    })
+
+app.listen(6007)
+ans: 28
+
+2)).Which of the following is not an incorrect statement/s regarding express js.
+
+1. cookie-parser will help us create and manage cookies depending on the request a user makes to the server.
+
+2. res.cookie() method is used for setting the cookie name to value.
+
+3. cookie: { maxAge: 10 } - this sets the cookie expiry time.
+
+4. Middleware can be used to add logging and authentication functionality.
+
+5. The res.sendFile() function basically transfers the file at the given path.
+ans:all
+
+3)).What does the following Express.js code using express-session do?
+
+const session = require('express-session');
+const express = require('express');
+const app = express();
+
+app.use(session({
+  secret: 'mySecretKey',
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.get('/set', (req, res) => {
+  req.session.username = 'john_doe';
+  res.send('Session value set');
+});
+
+app.get('/get', (req, res) => {
+  res.send(`Hello ${req.session.username}`);
+});
+  ans It sets and retrieves a session variable username that persists across different requests from the same user.
+
+4)) What is the output of following code on browser by requesting URL:: “http://localhost:4800”
+
+ 
+
+var app = require('express')()
+
+app.get("/",(req,res)=>{  
+
+    res.redirect("/world")
+
+    res.send();
+
+ });
+
+app.get("/world",(req,res)=>{
+
+    x={name:"xyz"}
+
+    res.send("Hello"+ x)
+
+})
+ans Hello[object Object]
+
+5)) What will be the output of following code after refreshing page 5 times on http://localhost:5012/hello
+
+ 
+
+const expr=require("express")
+
+const app=expr();
+
+var a=0
+
+const same=(req,res,next)=>{
+
+                     ++a
+
+                    res.write("Hello"+a+"\n")   
+
+                    res.send()
+
+                  }
+
+for(i=0;i<=5;i++)
+
+    { app.use("/hello",same) }
+
+app.listen(5012)
+
+*
+1 point
+
+ans Hello6
+
+6))What will be output for below code 
+
+var expr = require("express");
+
+var app = expr();
+
+app.get('/user/:userId/test/:test', (req, res) => {
+
+    req.params;
+
+    res.send(req.params);
+
+  });
+
+  app.listen(5000)
+
+ 
+
+Requested URL: http://localhost:5000/user/342/test/889
+
+ans { "userId": "342", "test": "889" }
+
+7))Which of the following is incorrect statement/s regarding express js.
+
+1. Pug is easy-to-code template engine used to code HTML in a more readable fashion.
+
+2.  a(href= “/about,title= “about me”) is correct way to add attributes in pug .
+
+3. Instead of having closing tags, PUG relies on whitespace/indentation.
+
+4. app.set("view engine","pug") is correct representation to set pug.
+
+5.  Multer will not process any form which is multipart (multipart/form-data).
+
+ans 2,5 
+
+8)) Identify correct statement/statements to set constraint of file size up to 1 KB during file upload in multer method.
+
+*
+1 point
+ans limits:{fileSize:1024}
+
+9))Identify output of following .pug file.
+
+p(style="font-size:25px;")    
+  i Good morning
+//    
+   p b LJU Students
+p b hello students
+p    
+  b    
+        i test  
+-var a="red"
+  h4 My favorite color is    
+    i(style="color:red")= a
+|Display content
+this  
+
+ans c
+
+10))What will be the output of the following Express.js code when a user visits the /set-cookie and then /get-cookie route?  
+
+const express = require("express");
+const app = express();
+const cookieParser = require("cookie-parser");
+
+app.use(cookieParser());
+
+app.get("/set-cookie", (req, res) => {
+  res.cookie("username", "joy");
+  res.send("Cookie has been set");
+});
+
+app.get("/get-cookie", (req, res) => {
+  res.send(`Hello ${req.cookies.username}`);
+});
+ans Visiting /set-cookie followed by /get-cookie will return "Hello joy"
